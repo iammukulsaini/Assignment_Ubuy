@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#fff" />
 </head>
 
 <body>
@@ -28,9 +29,9 @@
                 <div class="form-group password">
                     <div class="password-otp-tab">
                         <button id="passwordtab" class="active">Password</button>
-                        <button id="otptab">OTP</button>
+                        <button id="otptab" style="margin-left: -3px;">OTP</button>
                     </div>
-                    <div class="input-container" style="margin-left: 20px;">
+                    <div class="input-container loginpassword">
                         <input type="password" id="password" placeholder="Password *" class="input-field">
                         <span class="show-password" id="toggle-password-login">
                             <i class="fa-regular fa-eye" id="password-icon-login"></i>
@@ -42,11 +43,15 @@
                 <button class="loginbtn" id="loginBtn">Log In </button>
 
                 <button class="login-options">
-                    <img class="socialimg" src="google.png" alt="Google">
-                    <img class="socialimg" src="facebook.png" alt="Facebook">
-                    <img class="socialimg" src="apple.png" alt="Apple">
-                    <img class="socialimg" src="paypal.png" alt="Paypal">
-                    Login with Social Accounts
+                    <div class="loginimages">
+                        <img class="socialimg" src="google.png" alt="Google">
+                        <img class="socialimg" src="facebook.png" alt="Facebook">
+                        <img class="socialimg" src="apple.png" alt="Apple">
+                        <img class="socialimg" src="paypal.png" alt="Paypal">
+                    </div>
+                    <div class="loginsocial">
+                        Login with Social Accounts
+                    </div>
                 </button>
             </div>
             <div id="signupForm" style="display: none">
@@ -168,7 +173,7 @@
         });
 
         document.getElementById('loginBtn').addEventListener('click', function (event) {
-            event.preventDefault(); 
+            event.preventDefault();
 
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -182,15 +187,15 @@
 
             if (!email) {
                 errorMessageEmail.textContent = 'Email is required.';
-                isValid = false; 
+                isValid = false;
             } else if (!validateEmail(email)) {
                 errorMessageEmail.textContent = 'Please enter a valid email address.';
-                isValid = false; 
+                isValid = false;
             }
 
             if (!password) {
                 errorMessagePassword.textContent = 'Password is required.';
-                isValid = false; 
+                isValid = false;
             } else if (password.length < 6) {
                 errorMessagePassword.textContent = 'Password must be at least 6 characters long.';
                 isValid = false;
@@ -205,7 +210,7 @@
         });
 
         document.getElementById('signupBtn').addEventListener('click', function (event) {
-            event.preventDefault(); 
+            event.preventDefault();
 
             const email = document.getElementById('signup-email').value;
             const password = document.getElementById('signup-password').value;
@@ -219,7 +224,7 @@
             passwordError.textContent = '';
             confirmPasswordError.textContent = '';
 
-            let isValid = true; 
+            let isValid = true;
 
             if (!email) {
                 emailError.textContent = 'Email is required.';
