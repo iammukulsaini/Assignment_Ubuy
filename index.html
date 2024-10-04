@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Left Section -->
+        <div class="form-section">
+            <h1 class="heading">WELCOME TO UBUY</h1>
+            <div class="tabs">
+                <button id="loginTab" class="active" onclick="switchTab('login')">Log In</button>
+                <button id="signupTab" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+            <div id="loginForm">
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email Address *">
+                    <p class="error-message" id="error-message-email"></p>
+                </div>
+                <div class="form-group password">
+                    <div class="password-otp-tab">
+                        <button id="passwordtab" class="active">Password</button>
+                        <button id="otptab">OTP</button>
+                    </div>
+                    <div class="input-container" style="margin-left: 20px;">
+                        <input type="password" id="password" placeholder="Password *" class="input-field">
+                        <span class="show-password" id="toggle-password-login">
+                            <i class="fa-regular fa-eye" id="password-icon-login"></i>
+                        </span>
+                    </div>
+                </div>
+                <p class="error-message" id="error-message-password"></p>
+                <a href="#" class="forgot-password">Forgot Your Password?</a>
+                <button class="loginbtn" id="loginBtn">Log In </button>
+
+                <button class="login-options">
+                    <img class="socialimg" src="google.png" alt="Google">
+                    <img class="socialimg" src="facebook.png" alt="Facebook">
+                    <img class="socialimg" src="apple.png" alt="Apple">
+                    <img class="socialimg" src="paypal.png" alt="Paypal">
+                    Login with Social Accounts
+                </button>
+            </div>
+            <div id="signupForm" style="display: none">
+                <div class="form-group">
+                    <input type="email" id="signup-email" placeholder="Email Address *">
+                    <p id="signup-email-error" class="error-message"></p>
+                </div>
+                <div class="form-group signuppassword">
+                    <div class="input-container">
+                        <input type="password" id="signup-password" placeholder="Password *" class="input-field">
+                        <span class="show-password" id="toggle-password-signup">
+                            <i class="fa-regular fa-eye" id="password-icon-signup"></i>
+                        </span>
+                    </div>
+                    <p id="signup-password-error" class="error-message"></p>
+                </div>
+                <div class="form-group signuppassword">
+                    <div class="input-container">
+                        <input type="password" id="signup-confirm-password" placeholder="Confirm Password *"
+                            class="input-field">
+                        <span class="show-password" id="toggle-confirm-password-signup">
+                            <i class="fa-regular fa-eye" id="confirm-password-icon-signup"></i>
+                        </span>
+                    </div>
+                    <p id="signup-confirm-password-error" class="error-message"></p>
+                </div>
+                <button class="loginbtn" id="signupBtn">Sign Up </button>
+                <p onclick="switchTab('login')" class="forgot-password">Already have an Account , Log in </p>
+            </div>
+        </div>
+        <!-- Horizontal Line -->
+        <hr class="horizontalline" />
+        <!-- Right Section -->
+        <div class="info-section">
+            <ul>
+                <li>Delivering in 10,000+ Cities</li>
+                <li>Presence in 6 Continents</li>
+                <li>300 Million Products</li>
+                <li>10 Million Happy Customers & Counting</li>
+                <li>Ubuy Wins Best Cross Border Brand Award in 2023</li>
+            </ul>
+
+            <div class="qr-section">
+                <img src="qr.png" alt="QR Code">
+                <div>
+                    <p>Don't have the Ubuy app?</p>
+                    <p>Download it here!</p>
+                    <img src="play-store-icon.png" alt="Google Play" width="100">
+                    <img src="app-store-icon.png" alt="App Store" width="100">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const loginTab = document.getElementById('loginTab');
+            const signupTab = document.getElementById('signupTab');
+
+            if (tab === 'login') {
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                loginTab.classList.add('active');
+                signupTab.classList.remove('active');
+            } else {
+                loginForm.style.display = 'none';
+                signupForm.style.display = 'block';
+                loginTab.classList.remove('active');
+                signupTab.classList.add('active');
+            }
+        }
+
+
+        document.getElementById('toggle-password-signup').addEventListener('click', function () {
+            const passwordField = document.getElementById('signup-password');
+            const passwordIcon = document.getElementById('password-icon-signup');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                passwordIcon.classList.remove('fa-eye');
+                passwordIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                passwordIcon.classList.remove('fa-eye-slash');
+                passwordIcon.classList.add('fa-eye');
+            }
+        });
+
+        document.getElementById('toggle-confirm-password-signup').addEventListener('click', function () {
+            const passwordField = document.getElementById('signup-confirm-password');
+            const passwordIcon = document.getElementById('confirm-password-icon-signup');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                passwordIcon.classList.remove('fa-eye');
+                passwordIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                passwordIcon.classList.remove('fa-eye-slash');
+                passwordIcon.classList.add('fa-eye');
+            }
+        });
+
+        document.getElementById('toggle-password-login').addEventListener('click', function () {
+            const passwordField = document.getElementById('password');
+            const passwordIcon = document.getElementById('password-icon-login');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                passwordIcon.classList.remove('fa-eye');
+                passwordIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                passwordIcon.classList.remove('fa-eye-slash');
+                passwordIcon.classList.add('fa-eye');
+            }
+        });
+
+        document.getElementById('loginBtn').addEventListener('click', function (event) {
+            event.preventDefault(); 
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessageEmail = document.getElementById('error-message-email');
+            const errorMessagePassword = document.getElementById('error-message-password');
+
+            let isValid = true;
+
+            errorMessageEmail.textContent = '';
+            errorMessagePassword.textContent = '';
+
+            if (!email) {
+                errorMessageEmail.textContent = 'Email is required.';
+                isValid = false; 
+            } else if (!validateEmail(email)) {
+                errorMessageEmail.textContent = 'Please enter a valid email address.';
+                isValid = false; 
+            }
+
+            if (!password) {
+                errorMessagePassword.textContent = 'Password is required.';
+                isValid = false; 
+            } else if (password.length < 6) {
+                errorMessagePassword.textContent = 'Password must be at least 6 characters long.';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Login successful!');
+                document.getElementById('email').value = '';
+                document.getElementById('password').value = '';
+
+            }
+        });
+
+        document.getElementById('signupBtn').addEventListener('click', function (event) {
+            event.preventDefault(); 
+
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            const emailError = document.getElementById('signup-email-error');
+            const passwordError = document.getElementById('signup-password-error');
+            const confirmPasswordError = document.getElementById('signup-confirm-password-error');
+
+            emailError.textContent = '';
+            passwordError.textContent = '';
+            confirmPasswordError.textContent = '';
+
+            let isValid = true; 
+
+            if (!email) {
+                emailError.textContent = 'Email is required.';
+                isValid = false;
+            } else if (!validateEmail(email)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                isValid = false;
+            }
+
+            if (!password) {
+                passwordError.textContent = 'Password is required.';
+                isValid = false;
+            } else if (password.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters long.';
+                isValid = false;
+            }
+
+            if (!confirmPassword) {
+                confirmPasswordError.textContent = 'Confirm Password is required.';
+                isValid = false;
+            } else if (confirmPassword !== password) {
+                confirmPasswordError.textContent = 'Passwords do not match.';
+                isValid = false;
+            }
+
+            if (isValid) {
+                alert('Sign up successful!');
+                document.getElementById('signup-email').value = '';
+                document.getElementById('signup-password').value = '';
+                document.getElementById('signup-confirm-password').value = '';
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+
+    </script>
+</body>
+
+</html>
