@@ -279,7 +279,7 @@
         });
         document.getElementById('signup-password').addEventListener('input', function () {
             const password = document.getElementById('signup-password').value;
-            if (password && password >= 6) {
+            if (password && password?.length >= 6) {
                 document.getElementById('signup-password-error').textContent = '';
             }
         });
